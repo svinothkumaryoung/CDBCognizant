@@ -8,8 +8,6 @@ class parentClass{
         System.out.println("Name is "+name);
     }
 }
-
-
 public class SingleInheritance extends parentClass {
     String collegeName="SIET";
     void printCollegeData()
