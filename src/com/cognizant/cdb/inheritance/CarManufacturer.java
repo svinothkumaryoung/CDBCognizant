@@ -62,9 +62,7 @@ public class CarManufacturer extends CarDealer{
         System.out.println("CEO Name "+CEOName);
         System.out.println("Address of Head Office "+AddressOfHeadOffice);
         System.out.println("GST Number "+GSTNo);
-
     }
-
     public static void main(String[] args) {
         CarManufacturer cm=new CarManufacturer();
         cm.getOwnerDetails();
@@ -74,6 +72,5 @@ public class CarManufacturer extends CarDealer{
         cm.printOwnerDetails();
         cm.printDealerData();
         cm.printanufacturerDetails();
-
     }
 }
