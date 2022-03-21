@@ -18,11 +18,11 @@ public class SimpleException {
         }
         catch (NumberFormatException ae)
         {
-            System.out.println("Arthimetic Exception");
+            System.out.println(ae);
         }
         catch (Exception e)
         {
-            System.out.println(" Exception");
+            System.out.println(e);
         }
         finally {
             System.out.println("Finally Block ");
