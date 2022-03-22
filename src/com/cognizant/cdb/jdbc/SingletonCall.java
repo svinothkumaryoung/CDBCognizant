@@ -1,14 +1,12 @@
 package com.cognizant.cdb.jdbc;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.*;
 
-        import java.io.BufferedReader;
-        import java.io.IOException;
-        import java.io.InputStreamReader;
-        import java.sql.*;
-        import java.util.function.Consumer;
 
-public class SingletonCall {
+public class SingletonCall implements JdbcOperationInter{
 
     InputStreamReader inputStreamReader=new InputStreamReader(System.in);
     BufferedReader bufferedReader=new BufferedReader(inputStreamReader);
@@ -28,16 +26,21 @@ public class SingletonCall {
         }
         return c;
     }
-    void getData() throws IOException
+    public void getData()
     {
-        System.out.println("Enter the Register Number ");
-        si.setRegisterNo(Integer.parseInt(bufferedReader.readLine()));
-        System.out.println("Enter the Name ");
-        si.setName(bufferedReader.readLine());
-        System.out.println("Enter the address ");
-        si.setAddress(bufferedReader.readLine());
+        try{
+            System.out.println("Enter the Register Number ");
+            si.setRegisterNo(Integer.parseInt(bufferedReader.readLine()));
+            System.out.println("Enter the Name ");
+            si.setName(bufferedReader.readLine());
+            System.out.println("Enter the address ");
+            si.setAddress(bufferedReader.readLine());
+        }
+        catch (IOException ioe){
+        System.out.println(ioe);
     }
-    void insertData()
+    }
+    public void insertData()
     {
         try{
 
@@ -62,7 +65,7 @@ public class SingletonCall {
         }
 
     }
-    void reteriveInfo()
+    public void reteriveInfo()
     {
         try{
 
@@ -81,30 +84,40 @@ public class SingletonCall {
         }
     }
 
-    void UserChoice()  throws IOException
+
+
+    public void UserChoice()
     {
 
-        System.out.println("Enter your Choice ");
-        System.out.println("1.Insert \n2.Reterive\n3.Update\n4.Delete");
-        choice=Integer.parseInt(bufferedReader.readLine());
-        switch(choice)
-        {
-            case 1:
-                this.getData();
-                this.insertData();
-                break;
-            case 2:
-                this.reteriveInfo();
-                break;
-            case 3:
-                System.out.println("Update Operation Yet to Come");
-                break;
-            case 4:
-                System.out.println("Delete Operation yet to Come");
-                break;
+        try{
+            System.out.println("Enter your Choice ");
+            System.out.println("1.Insert \n2.Reterive\n3.Update\n4.Delete");
+            choice=Integer.parseInt(bufferedReader.readLine());
+            switch(choice)
+            {
+                case 1:
+                    this.getData();
+                    this.insertData();
+                    break;
+                case 2:
+                    this.reteriveInfo();
+                    break;
+                case 3:
+                    System.out.println("Update Operation Yet to Come");
+                    break;
+                case 4:
+                    System.out.println("Delete Operation yet to Come");
+                    break;
 
+            }
         }
-    }
+
+            catch (IOException ioe){
+                System.out.println(ioe);
+            }
+        }
+
+
     public static void main(String[] args) throws IOException {
         SingletonCall singletonCall=new SingletonCall();
         singletonCall.UserChoice();
